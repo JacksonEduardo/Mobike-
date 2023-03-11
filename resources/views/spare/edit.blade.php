@@ -7,10 +7,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
-                <form class="p-5 bordaer shadow" method="POST" action="{{route('spare.update', compact('spare'))}}" enctype="multipart/form-data">
+                <form class="p-5 border shadow" method="POST" action="{{route('spare.update', compact('spare'))}}" enctype="multipart/form-data">
                     @csrf
                     @method('put')
-                    
                             <label for="brand" class="form-label">Modello</label>
                         <input type="text" name="brand" class="form-control" id="brand">
     

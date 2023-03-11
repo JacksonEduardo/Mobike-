@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bike;
 use Illuminate\Http\Request;
+use App\Http\Requests\BikeRequest;
 
 class BikeController extends Controller
 {
@@ -28,12 +29,12 @@ class BikeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BikeRequest $request)
     {
         $bike = Bike::create([
             'name' => $request->name,
             'brand' => $request->brand,
-            'photo' => $request->file('photo')->store('public/photos'),
+            'photo' => $request->photo ? $request->file('photo')->store('public/photos') : null,
             'price' => $request->price,
         ]);
         return redirect(route('bike.index'))->with('bikeCreated', 'Hai inserito correttamente il tuo annuncio');

@@ -1,9 +1,7 @@
 <x-layout>
     <x-header>
-        Pagina di dettaglio
+        {{$extra->brand}}
     </x-header>
-
-
     <div class="container-fluid my-5 background">
         <div class="row">
             <div class="col-12 col-md-12">
@@ -12,22 +10,22 @@
                         <div class="solution_card">
                             <div class="hover_color_bubble"></div>
                             <div class="so_top_icon">
-                                <img src="{{Storage::url($bike->photo)}}" class="card-img-top" alt="...">
+                                <img src="{{Storage::url($extra->photo)}}" class="card-img-top" alt="...">
                             </div>
                             <div class="solu_title">
-                                <h3>{{$bike->brand}}</h3>
+                                <h3>{{$extra->brand}}</h3>
                             </div>
                             <div class="solu_description">
-                                <p>{{$bike->name}}</p>
-                                <p>{{$bike->description}}</p>
-                                <p>{{$bike->price}} €</p>
-                                <a href="{{route('bike.index', compact('bike'))}}">
+                                <p>{{$extra->name}}</p>
+                                <p>{{$extra->description}}</p>
+                                <p>{{$extra->price}} €</p>
+                                <a href="{{route('extra.index', compact('extra'))}}">
                                     <button type="button" class="read_more_btn">Indietro</button>
                                 </a>
-                                <a href="{{route('bike.edit', compact('bike'))}}">
+                                <a href="{{route('extra.edit', compact('extra'))}}">
                                     <button type="button" class="read_more_btn">Modifica</button>
                                 </a>
-                                <form method='POST' action="{{route('bike.destroy', compact('bike'))}}" class="d-inline mt-2">
+                                <form method='POST' action="{{route('extra.destroy', compact('extra'))}}" class="d-inline mt-2">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger">Ellimina</button>  

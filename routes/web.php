@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BikeController;
+use App\Http\Controllers\ExtraController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SpareController;
 use Illuminate\Support\Facades\Route;
@@ -35,3 +36,12 @@ Route::get('/spare/show/{spare}', [SpareController::class, ('show')])->name('spa
 Route::get('/spare/edit/{spare}', [SpareController::class, ('edit')])->name('spare.edit');
 Route::put('/spare/update{spare}', [SpareController::class, ('update')])->name('spare.update');
 Route::delete('/spare/destroy{spare}', [SpareController::class,('destroy')])->name('spare.destroy');
+
+//rotte per accessori
+Route::get('/extra/index', [ExtraController::class, ('index')])->name('extra.index');
+Route::get('/extra/create', [ExtraController::class, ('create')])->name('extra.create');
+Route::post('/extra/store', [ExtraController::class, ('store')])->name('extra.store');
+Route::get('/extra/show{extra}', [ExtraController::class, ('show')])->name('extra.show');
+Route::get('/extra/edit{extra}', [ExtraController::class, ('edit')])->name('extra.edit');
+Route::put('/extra/update{extra}', [ExtraController::class, ('update')])->name('extra.update');
+Route::delete('/extra/destroy{extra}',[ExtraController::class, ('destroy')])->name('extra.destroy');

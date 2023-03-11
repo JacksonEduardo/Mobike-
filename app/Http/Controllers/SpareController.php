@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Spare;
 use Illuminate\Http\Request;
+use App\Http\Requests\SpareRequest;
 
 class SpareController extends Controller
 {
@@ -28,12 +29,12 @@ class SpareController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SpareRequest $request)
     {
             $spare = Spare::create([
                 'brand' => $request->brand,
                 'description' => $request->description,
-                'photo' => $request->file('photo')->store('public/photos'),
+                'photo' => $request->photo ? $request->file('photo')->store('public/photos') : null,
             ]);
             return redirect(route('spare.index'))->with('spareCreated', 'Il tuo annuncio è stato inserito correttamente');
     }

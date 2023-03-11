@@ -37,8 +37,8 @@
                         <img style="width: 200px" src="{{Storage::url($bike->photo)}}" alt="">
                     </div>                    
                     <div class="mb-3">
-                        <label for="price" class="form-label">Price €</label>
-                        <input type="double" name="price" class="form-control" id="price" value="{{$bike->price}}€">
+                        <label for="price" class="form-label">Prezzo €</label>
+                        <input type="double" name="price" class="form-control" id="price" value="{{$bike->price}}">
                     </div>                    
                     <button type="submit" class="btn btn-primary">Aggiorna Annuncio</button>
                   </form>
