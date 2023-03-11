@@ -10,8 +10,15 @@
             <a class="nav-link active" aria-current="page" href="{{route('bike.index')}}">Bikes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('bike.create')}}">Inserisci Annuncio</a>
+            <a class="nav-link active" aria-current="page" href="{{route('spare.index')}}">Ricambi</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{route('bike.create')}}">Inserisci Bike</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{route('spare.create')}}">Inserisci Ricambio</a>
+          </li>
+          
           @auth
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,9 +42,9 @@
               </a>
               <ul class="dropdown-menu">
                 
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="{{route('login')}}">Accedi</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">link di riserva</a></li>
               </ul>
             </li>
           @endif

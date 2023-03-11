@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BikeController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\SpareController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,12 @@ Route::get('/bike/show/{bike}', [BikeController::class, ('show')])->name('bike.s
 Route::get('/bike/edit/{bike}', [BikeController::class, ('edit')])->name('bike.edit');
 Route::put('/bike/update/{bike}', [BikeController::class, ('update')])->name('bike.update');
 Route::delete('/bike/destroy/{bike}', [BikeController::class, ('destroy')])->name('bike.destroy'); 
+
+//rotte per ricambi
+Route::get('/spare/index', [SpareController::class, ('index')])->name('spare.index');
+Route::get('/spare/create', [SpareController::class, ('create')])->name('spare.create');
+Route::post('/spare/store', [SpareController::class, ('store')])->name('spare.store');
+Route::get('/spare/show/{spare}', [SpareController::class, ('show')])->name('spare.show');
+Route::get('/spare/edit/{spare}', [SpareController::class, ('edit')])->name('spare.edit');
+Route::put('/spare/update{spare}', [SpareController::class, ('update')])->name('spare.update');
+Route::delete('/spare/destroy{spare}', [SpareController::class,('destroy')])->name('spare.destroy');

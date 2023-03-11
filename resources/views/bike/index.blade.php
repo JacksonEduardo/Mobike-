@@ -21,7 +21,7 @@
 
     <div class="container my-5">
         <div class="row justify-content-center">
-            
+
             @if(count ($bikes))
                 @foreach ($bikes as $bike)
                 <div class="col-12 col-md-3">
@@ -34,9 +34,9 @@
                             <a href="{{route('bike.edit', compact('bike'))}}" class="btn btn-primary">Modifica annuncio</a>
 
                             <form method='POST' action="{{route('bike.destroy', compact('bike'))}}" class="d-inline mt-2">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger">Ellimina</button>  
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Ellimina</button>  
                             </form>
                         </div>
                     </div>
