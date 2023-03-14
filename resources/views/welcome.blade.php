@@ -14,13 +14,13 @@
                         <h5 class="card-title">{{$bike->name}}</h5>
                         <p class="card-text">{{$bike->brand}}</p>
                         <a href="{{route('bike.show', compact('bike'))}}" class="btn btn-primary">Scopri di più</a>
-                        <a href="{{route('bike.edit', compact('bike'))}}" class="btn btn-primary">Modifica annuncio</a>
+                        {{-- <a href="{{route('bike.edit', compact('bike'))}}" class="btn btn-primary">Modifica annuncio</a> --}}
                         
-                        <form method='POST' action="{{route('bike.destroy', compact('bike'))}}" class="d-inline mt-2">
+                        {{-- <form method='POST' action="{{route('bike.destroy', compact('bike'))}}" class="d-inline mt-2">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger">Ellimina</button>  
-                        </form>
+                        </form> --}}
                     </div>
                 </div>           
             </div>
@@ -34,7 +34,7 @@
                         <h5 class="card-title">{{$spare->name}}</h5>
                         <p class="card-text">{{$spare->brand}}</p>
                         <a href="{{route('spare.show', compact('spare'))}}" class="btn btn-primary">Scopri di più</a>
-                        <a href="{{route('spare.edit', compact('spare'))}}" class="btn btn-primary">Modifica annuncio</a>
+                        {{-- <a href="{{route('spare.edit', compact('spare'))}}" class="btn btn-primary">Modifica annuncio</a> --}}
                     </div>
                 </div>           
             </div>

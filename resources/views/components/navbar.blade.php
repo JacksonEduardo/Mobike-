@@ -16,10 +16,14 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{route('extra.index')}}">Accessori</a>
           </li>
+          {{-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{route('register')}}">Inserisci annuncio</a>
+          </li> --}}
           @auth
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Ciao {{Auth::user()->name}}
+                {{-- Ciao {{Auth::user()->name}} <br> --}}
+                Inserisci un annuncio
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{{route('bike.create')}}">Inserisci Bike</a></li>
@@ -31,9 +35,12 @@
               </ul>
             </li>
           @else
-            <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{route('register')}}">Inserisci annuncio</a>
+          </li>
+            {{-- <li class="nav-item">
               <a class="nav-link" href="{{route('register')}}">Registrati</a>
-            </li>
+            </li> --}}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Ciao! accedi qui
@@ -42,7 +49,7 @@
                 
                 <li><a class="dropdown-item" href="{{route('login')}}">Accedi</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">link di riserva</a></li>
+                <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
               </ul>
             </li>
           @endif

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
+
     public function homepage(){
 
         $bikes = Bike::take(2)->get();
