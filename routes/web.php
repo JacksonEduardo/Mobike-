@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PublicController::class, ('homepage')])->name('homepage');
+Route::get('/profile', [PublicController::class, ('profile')])->name('profile')->middleware('auth');
 
 //rotte per le biciclette
-Route::get('/bike/index', [BikeController::class, ('bike')])->name('bike.index');
+Route::get('/bike/index', [BikeController::class, ('index')])->name('bike.index');
 Route::get('/bike/create', [BikeController::class, ('create')])->name('bike.create');
 Route::post('/bike/store', [BikeController::class, ('store')])->name('bike.store');
 Route::get('/bike/show/{bike}', [BikeController::class, ('show')])->name('bike.show');

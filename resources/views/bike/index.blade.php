@@ -18,6 +18,11 @@
         {{session('bikeDeleted')}}
     </div>
     @endif
+    @if(session('accessDenied'))
+    <div class="alert alert-danger">
+        {{session('accessDenied')}}
+    </div>
+    @endif
 
 
     <div class="container-fluid my-5 background">
@@ -37,6 +42,8 @@
                                     </div>
                                     <div class="solu_description">
                                         <p>{{$bike->name}}</p>
+                                        <p class="fst-italic text-muted">{{$bike->user->name}}</p>
+                                        {{-- @dd($bike->user->name) --}}
                                         <a href="{{route('bike.show', compact('bike'))}}">
                                             <button type="button" class="read_more_btn">Dettagli</button>
                                         </a>

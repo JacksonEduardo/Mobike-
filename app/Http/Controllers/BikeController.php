@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bike;
 use Illuminate\Http\Request;
 use App\Http\Requests\BikeRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BikeController extends Controller
 {
@@ -42,6 +43,7 @@ class BikeController extends Controller
             'brand' => $request->brand,
             'photo' => $request->photo ? $request->file('photo')->store('public/photos') : null,
             'price' => $request->price,
+            'user_id' => Auth::user()->id,
         ]);
         return redirect(route('bike.index'))->with('bikeCreated', 'Hai inserito correttamente il tuo annuncio');
     }
@@ -58,10 +60,13 @@ class BikeController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Bike $bike)
-    {
+    {   
+        if($bike->user_id != Auth::id()){
+            return redirect(route('bike.index'))->with('accessDenied', 'Non sei autorizzato ad effetturare questa operazione');
+        }
         return view('bike.edit', compact('bike'));
     }
-
+  
     /**
      * Update the specified resource in storage.
      */
@@ -89,6 +94,10 @@ class BikeController extends Controller
      */
     public function destroy(Bike $bike)
     {
+        if($bike->user_id != Auth::id()){
+            return redirect(route('bike.index'))->with('accessDenied', 'Non sei autorizzato ad effetturare questa operazione');
+        }
+
         $bike->delete();
         return redirect(route('bike.index'))->with('bikeDeleted', 'Hai cancellellato correttamente');
     }

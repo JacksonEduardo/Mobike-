@@ -13,6 +13,11 @@ class Bike extends Model
        'name',
        'brand',
        'photo',
-       'price', 
+       'price',
+       'user_id' 
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

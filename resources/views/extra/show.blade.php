@@ -22,14 +22,16 @@
                                 <a href="{{route('extra.index', compact('extra'))}}">
                                     <button type="button" class="read_more_btn">Indietro</button>
                                 </a>
-                                <a href="{{route('extra.edit', compact('extra'))}}">
-                                    <button type="button" class="read_more_btn">Modifica</button>
-                                </a>
-                                <form method='POST' action="{{route('extra.destroy', compact('extra'))}}" class="d-inline mt-2">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger">Ellimina</button>  
-                                </form>
+                                @if(Auth::user() && Auth::id() == $extra->user_id)                                                                
+                                    <a href="{{route('extra.edit', compact('extra'))}}">
+                                        <button type="button" class="read_more_btn">Modifica</button>
+                                    </a>
+                                    <form method='POST' action="{{route('extra.destroy', compact('extra'))}}" class="d-inline mt-2">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger">Ellimina</button>  
+                                    </form>
+                                @endif
                             </div>
                         </div>   
                     </div>

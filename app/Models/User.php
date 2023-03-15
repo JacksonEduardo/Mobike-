@@ -41,4 +41,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    //Funzione di relazione un utente può essere relazionato a piu articoli
+    public function bikes(){
+        //un utente ha più articoli 
+        return $this->hasMany(Bike::class);
+    }
+    //SPARES
+    public function spares(){
+        //un utente ha più articoli 
+        return $this->hasMany(Spare::class);
+    }
+
+    public function extras(){
+        return $this->hasMany(Extra::class);
+    }
 }

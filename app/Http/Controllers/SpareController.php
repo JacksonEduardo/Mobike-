@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Spare;
 use Illuminate\Http\Request;
 use App\Http\Requests\SpareRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SpareController extends Controller
 {
@@ -40,6 +41,7 @@ class SpareController extends Controller
                 'brand' => $request->brand,
                 'description' => $request->description,
                 'photo' => $request->photo ? $request->file('photo')->store('public/photos') : null,
+                'user_id' => Auth::user()->id,
             ]);
             return redirect(route('spare.index'))->with('spareCreated', 'Il tuo annuncio è stato inserito correttamente');
     }
@@ -57,6 +59,9 @@ class SpareController extends Controller
      */
     public function edit(Spare $spare)
     {
+        if($spare->user_id != Auth::id()){
+            return redirect(route('spare.index'))->with('accessDenied', 'Non sei autorizzato ad effettuare questa operazione');
+        }
         return view('spare.edit', compact('spare'));
     }
 
@@ -85,6 +90,10 @@ class SpareController extends Controller
      */
     public function destroy(Spare $spare)
     {
+        if($spare->user_id != Auth::id()){
+            return redirect(route('bike.index'))->with('accessDenied', 'Non sei autorizzato ad effetturare questa operazione');
+        }
+
         $spare->delete();
         return redirect(route('spare.index'))->with('spareDestroy', 'Hai elliminato correttamente l\'annuncio');
     }

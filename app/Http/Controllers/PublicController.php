@@ -6,6 +6,7 @@ use App\Models\Bike;
 use App\Models\Extra;
 use App\Models\Spare;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PublicController extends Controller
 {
@@ -18,5 +19,14 @@ class PublicController extends Controller
 
         return view('welcome', compact('bikes', 'spares', 'extras'));
 
+    }
+
+    public function profile(){
+        //primo metodo
+        // return view('profile');
+
+        //secondo metodo
+        $bikes = Bike::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
+        return view('profile', compact('bikes'));
     }
 }

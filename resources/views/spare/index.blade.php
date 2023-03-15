@@ -27,6 +27,7 @@
                                 </div>
                                 <div class="solu_description">
                                     <p>{{$spare->name}}</p>
+                                    <p class="fst-italic text-muted">{{$spare->user->name}}</p>
                                     <a href="{{route('spare.show', compact('spare'))}}">
                                         <button type="button" class="read_more_btn">Dettagli</button>
                                     </a>

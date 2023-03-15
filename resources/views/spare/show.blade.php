@@ -21,14 +21,16 @@
                                 <a href="{{route('spare.index', compact('spare'))}}">
                                     <button type="button" class="read_more_btn">Indietro</button>
                                 </a>
-                                <a href="{{route('spare.edit', compact('spare'))}}">
-                                    <button type="button" class="read_more_btn">Modifica</button>
-                                </a>
-                                <form method='POST' action="{{route('spare.destroy', compact('spare'))}}" class="d-inline mt-2">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger">Ellimina</button>  
-                                </form>
+                                @if(Auth::user() && Auth::id() == $spare->user_id)
+                                    <a href="{{route('spare.edit', compact('spare'))}}">
+                                        <button type="button" class="read_more_btn">Modifica</button>
+                                    </a>
+                                    <form method='POST' action="{{route('spare.destroy', compact('spare'))}}" class="d-inline mt-2">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger">Ellimina</button>  
+                                    </form>
+                                @endif
                             </div>
                         </div>   
                     </div>

@@ -15,5 +15,10 @@ class Extra extends Model
         'price',
         'description',
         'photo',
+        'user_id',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

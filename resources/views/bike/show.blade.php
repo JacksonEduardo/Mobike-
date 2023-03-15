@@ -24,14 +24,17 @@
                                 <a href="{{route('bike.index', compact('bike'))}}">
                                     <button type="button" class="read_more_btn">Indietro</button>
                                 </a>
-                                <a href="{{route('bike.edit', compact('bike'))}}">
-                                    <button type="button" class="read_more_btn">Modifica</button>
-                                </a>
-                                <form method='POST' action="{{route('bike.destroy', compact('bike'))}}" class="d-inline mt-2">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger">Ellimina</button>  
-                                </form>
+
+                                @if(Auth::user() && Auth::id() == $bike->user_id)
+                                    <a href="{{route('bike.edit', compact('bike'))}}">
+                                        <button type="button" class="read_more_btn">Modifica</button>
+                                    </a>
+                                    <form method='POST' action="{{route('bike.destroy', compact('bike'))}}" class="d-inline mt-2">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger">Ellimina</button>  
+                                    </form>
+                                @endif
                             </div>
                         </div>   
                     </div>

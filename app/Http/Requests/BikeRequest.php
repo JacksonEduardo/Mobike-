@@ -26,7 +26,6 @@ class BikeRequest extends FormRequest
             'brand' => 'required',
             'photo' => 'required|image',
             'price' => 'required',
-            'description' => 'required|min:5|max:100',
         ];
     }
 }

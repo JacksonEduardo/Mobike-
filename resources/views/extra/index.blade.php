@@ -14,6 +14,11 @@
             {{session('extraUpdate')}}
         </div>
     @endif
+    @if(session('accessDenied'))
+        <div class="alert alert-success">
+            {{session('accessDenied')}}
+        </div>
+    @endif
 
 <div class="container-fluid my-5 background">
     <div class="row">
@@ -32,6 +37,7 @@
                                     </div>
                                     <div class="solu_description">
                                         <p>{{$extra->name}}</p>
+                                        <p class="fst-italic text-muted">{{$extra->user->name}}</p>
                                         <a href="{{route('extra.show', compact('extra'))}}">
                                             <button type="button" class="read_more_btn">Dettagli</button>
                                         </a>
