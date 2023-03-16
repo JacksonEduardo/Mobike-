@@ -36,8 +36,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="spare" class="form-label">Compatibile con</label>
-                        <select name="spare" id="spare" class="form-control">
+                        <label for="spare" class="form-label">Scegli compatibilità</label>
+                        <select name="spares[]" id="spare" class="form-control" multiple>
                             @foreach($spares as $spare)
                                 <option value="{{$spare->id}}">
                                     {{$spare->brand}}

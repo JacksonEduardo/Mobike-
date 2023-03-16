@@ -35,9 +35,11 @@
                     
                     <div class="mb-3">
                         <label for="spare" class="form-label">Compatibile con</label>
-                        <select name="spare" id="spare" class="form-control">
+                        <select name="bikes[]" id="bike" class="form-control" multiple>
                             @foreach($spares as $spare)
-                                <option value="{{$spare->id}}">
+                                <option value="{{$spare->id}}"
+                                    @if($bike->spares->contains($spare)) selected @endif
+                                    >
                                     {{$spare->brand}}
                                 </option>
                             @endforeach
