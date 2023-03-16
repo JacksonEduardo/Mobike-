@@ -3,6 +3,12 @@
     <x-header>  
         Mobike
     </x-header>
+
+    @if(session('userDeleted'))
+        <div class="alert alert-success">
+            {{session('userDeleted')}}
+        </div>
+    @endif
     
     <div class="container">
         <div class="row justify-content-center">

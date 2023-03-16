@@ -7,7 +7,6 @@
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
-
                 <form class="p-5 border shadow" method="POST" action="{{route('bike.store')}}" enctype="multipart/form-data">
                     @csrf
                     @if ($errors->any())
@@ -34,6 +33,17 @@
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
                         <input type="double" name="price" class="form-control" id="price">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="spare" class="form-label">Compatibile con</label>
+                        <select name="spare" id="spare" class="form-control">
+                            @foreach($spares as $spare)
+                                <option value="{{$spare->id}}">
+                                    {{$spare->brand}}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     
                     <button type="submit" class="btn btn-primary">Inserisci Annuncio</button>

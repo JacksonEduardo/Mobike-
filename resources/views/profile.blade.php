@@ -3,11 +3,34 @@
         Tutte le biciclette
     </x-header>
   
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2>Inserisci una foto profilo</h2>
+            <form method="POST" action="{{route('changeAvatar', ['user' => Auth::user()])}}" enctype="multipart/form-data">
+                @csrf
+                @method('put')
+                <input type="file" name="avatar" class="form-control">
+                <button type="submit" class="btn btn-primary">Inserisci Avatar</button>
+            </form>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <form method="POST" action="{{route('user.destroy')}}">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-primary">Cancella profilo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid my-5 background">
         <div class="row">
-            <h1>Ciao {{Auth::user()->name}}</h1>
-            <p>Ecco i tuoi annunci</p>
-            <h2>Le mie biciclette</h2>
+            <div>
+                <h1>Ciao {{Auth::user()->name}}</h1>
+                <p>Ecco i tuoi annunci</p>
+                <h2>Le mie biciclette</h2>
+                <img style="width: 100px; border-radius: 50%" src="{{Storage::url(Auth::user()->avatar)}}" alt="">
+            </div>
                 @foreach(Auth::user()->bikes as $bike)  
                 {{-- @foreach($bikes as $bike)            --}}
                     <div class="col-12 col-md-4">

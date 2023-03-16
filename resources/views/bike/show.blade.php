@@ -24,7 +24,15 @@
                                 <a href="{{route('bike.index', compact('bike'))}}">
                                     <button type="button" class="read_more_btn">Indietro</button>
                                 </a>
-
+                                @if(count($bike->spares) > 0)
+                                    <hr>
+                                    <ul>
+                                        @foreach($bike->spares as $spare)
+                                            <li>{{$spare->description}} Marchio  {{$spare->brand}}</li>
+                                        @endforeach
+                                    </ul>
+                                    <hr>
+                                @endif
                                 @if(Auth::user() && Auth::id() == $bike->user_id)
                                     <a href="{{route('bike.edit', compact('bike'))}}">
                                         <button type="button" class="read_more_btn">Modifica</button>

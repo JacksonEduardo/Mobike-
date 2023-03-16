@@ -4,6 +4,7 @@ use App\Http\Controllers\BikeController;
 use App\Http\Controllers\ExtraController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SpareController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,19 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//PUBLIC CONTROLLER
 Route::get('/', [PublicController::class, ('homepage')])->name('homepage');
-Route::get('/profile', [PublicController::class, ('profile')])->name('profile')->middleware('auth');
+
+//USER CONTROLLER
+Route::get('/profile', [UserController::class, ('profile')])->name('profile')->middleware('auth');
+//rotta per creazione avatar
+Route::put('/profile/avatar{user}', [UserController::class, ('changeAvatar')])->name('changeAvatar');
+//ellimane un utente
+Route::delete('/user/destroy', [UserController::class, ('destroy')])->name('user.destroy');
+
+
+
+
 
 //rotte per le biciclette
 Route::get('/bike/index', [BikeController::class, ('index')])->name('bike.index');

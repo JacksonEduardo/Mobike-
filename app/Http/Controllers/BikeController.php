@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bike;
+use App\Models\Spare;
 use Illuminate\Http\Request;
 use App\Http\Requests\BikeRequest;
 use Illuminate\Support\Facades\Auth;
@@ -29,8 +30,10 @@ class BikeController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('bike.create');
+    {  
+         $spares = Spare::all();
+
+        return view('bike.create', compact('spares'));
     }
 
     /**
@@ -38,13 +41,29 @@ class BikeController extends Controller
      */
     public function store(BikeRequest $request)
     {
-        $bike = Bike::create([
+        // dd($request->all());
+        //PRIMO METODO
+        $bike = Bike::create([  
             'name' => $request->name,
             'brand' => $request->brand,
             'photo' => $request->photo ? $request->file('photo')->store('public/photos') : null,
             'price' => $request->price,
             'user_id' => Auth::user()->id,
         ]);
+
+        $bike->spares()->attach($request->spare);
+
+        //SECONDO METOD per creare un oggetti con l'unione delle due tabelle per mezzo della tabella PIVOT
+        // $spare = Spare::find($request->spare);
+        
+        // $spare->bikes()->create([
+        //     'name' => $request->name,
+        //         'brand' => $request->brand,
+        //         'photo' => $request->photo ? $request->file('photo')->store('public/photos') : null,
+        //         'price' => $request->price,
+        //         'user_id' => Auth::user()->id,
+        // ]);
+
         return redirect(route('bike.index'))->with('bikeCreated', 'Hai inserito correttamente il tuo annuncio');
     }
 
@@ -64,7 +83,10 @@ class BikeController extends Controller
         if($bike->user_id != Auth::id()){
             return redirect(route('bike.index'))->with('accessDenied', 'Non sei autorizzato ad effetturare questa operazione');
         }
-        return view('bike.edit', compact('bike'));
+
+        $spares = Spare::all();
+
+        return view('bike.edit', compact('bike', 'spares'));
     }
   
     /**
@@ -86,6 +108,9 @@ class BikeController extends Controller
                 'price' => $request->price
             ]);
         }
+
+        $bike->spares()->attach($request->spare);
+
         return redirect(route('bike.index'))->with('bikeUpdated', 'Hai modificato correttamente');
     }
 
@@ -97,7 +122,11 @@ class BikeController extends Controller
         if($bike->user_id != Auth::id()){
             return redirect(route('bike.index'))->with('accessDenied', 'Non sei autorizzato ad effetturare questa operazione');
         }
-
+       
+        foreach($bike->spares as $spare){
+            $bike->spare()->detach($spare->id);
+        };
+       
         $bike->delete();
         return redirect(route('bike.index'))->with('bikeDeleted', 'Hai cancellellato correttamente');
     }

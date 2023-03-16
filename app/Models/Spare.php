@@ -19,4 +19,8 @@ class Spare extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function bikes(){
+        return $this->belongsToMany(Bike::class);
+    }
 }

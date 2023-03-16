@@ -32,6 +32,18 @@
                         <label for="photo" class="form-label">Foto</label>
                         <input type="file" name="photo" class="form-control" id="photo">
                     </div>
+                    
+                    <div class="mb-3">
+                        <label for="spare" class="form-label">Compatibile con</label>
+                        <select name="spare" id="spare" class="form-control">
+                            @foreach($spares as $spare)
+                                <option value="{{$spare->id}}">
+                                    {{$spare->brand}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="mb-3">
                         <label for="photoEsistente" class="form-label">Foto Attuale</label>
                         <img style="width: 200px" src="{{Storage::url($bike->photo)}}" alt="">
