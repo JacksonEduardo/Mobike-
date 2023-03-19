@@ -4,9 +4,9 @@
     </x-header>
     <div class="container-fluid my-5 background">
         <div class="row">
-            <div class="col-12 col-md-12">
+            <div class="col-12 col-md-12 my-5">
                 <div class="our_solution_category">
-                    <div class="solution_cards_box">
+                    <div class="solution_cards_box d-flex">
                         <div class="solution_card">
                             <div class="hover_color_bubble"></div>
                             <div class="so_top_icon">

@@ -26,11 +26,11 @@
 
 
     <div class="container-fluid my-5 background">
-        <div class="row">
+        <div class="row justify-content-center">
             @if(count($bikes))
                 @foreach($bikes as $bike)           
-                    <div class="col-12 col-md-4">
-                        <div class="our_solution_category">
+                    <div class="col-12 col-md-4 my-5 p-auto">
+                        <div class="our_solution_category m-0">
                             <div class="solution_cards_box">
                                 <div class="solution_card">
                                     <div class="hover_color_bubble"></div>

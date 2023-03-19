@@ -29,7 +29,7 @@
                 <h1>Ciao {{Auth::user()->name}}</h1>
                 <p>Ecco i tuoi annunci</p>
                 <h2>Le mie biciclette</h2>
-                <img style="width: 100px; border-radius: 50%" src="{{Storage::url(Auth::user()->avatar)}}" alt="">
+                <img style="width: 100px; background-color:red; border-radius: 50%" src="{{Storage::url(Auth::user()->avatar)}}" alt="">
             </div>
                 @foreach(Auth::user()->bikes as $bike)  
                 {{-- @foreach($bikes as $bike)            --}}

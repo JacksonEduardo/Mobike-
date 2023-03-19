@@ -18,7 +18,8 @@
   background-size: cover; */
   
     /* The image used */
-    background-image: url(/public/media/fondo.jpg);
+    background-image: linear-gradient(rgba(0, 255, 255, 0.4), rgba(0, 255, 255, 0.4)), url(/public/media/fondo.jpg);
+
   
     /* Set a specific height */
     min-height: 500px; 

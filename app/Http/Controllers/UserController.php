@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Bike;
+use App\Models\User;
 use App\Models\Extra;
 use App\Models\Spare;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller

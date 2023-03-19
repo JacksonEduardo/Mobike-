@@ -7,55 +7,60 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('profile')}}">Profilo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('bike.index')}}">Bikes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('spare.index')}}">Ricambi</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('extra.index')}}">Accessori</a>
-          </li>
-          {{-- <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('register')}}">Inserisci annuncio</a>
-          </li> --}}
-          @auth
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{-- Ciao {{Auth::user()->name}} <br> --}}
-                Inserisci un annuncio
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{route('bike.create')}}">Inserisci Bike</a></li>
-                <li><a class="dropdown-item" href="{{route('spare.create')}}">Inserisci Ricambio</a></li>
-                <li><a class="dropdown-item" href="{{route('extra.create')}}">Inserisci Accessorio</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a></li>
-                <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none">@csrf</form>
-              </ul>
+          <div class="d-flex">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{route('profile')}}">Profilo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{route('bike.index')}}">Bikes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{route('spare.index')}}">Ricambi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{route('extra.index')}}">Accessori</a>
+              </li>
+              {{-- <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{route('register')}}">Inserisci annuncio</a>
+              </li> --}}
+          </div>
+          
+            @auth
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{-- Ciao {{Auth::user()->name}} <br> --}}
+                  Inserisci un annuncio
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{{route('bike.create')}}">Inserisci Bike</a></li>
+                  <li><a class="dropdown-item" href="{{route('spare.create')}}">Inserisci Ricambio</a></li>
+                  <li><a class="dropdown-item" href="{{route('extra.create')}}">Inserisci Accessorio</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a></li>
+                  <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none">@csrf</form>
+                </ul>
+              </li>
+            @else
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{route('register')}}">Inserisci annuncio</a>
             </li>
-          @else
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('register')}}">Inserisci annuncio</a>
-          </li>
-            {{-- <li class="nav-item">
-              <a class="nav-link" href="{{route('register')}}">Registrati</a>
-            </li> --}}
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Ciao! accedi qui
-              </a>
-              <ul class="dropdown-menu">
-                
-                <li><a class="dropdown-item" href="{{route('login')}}">Accedi</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
-              </ul>
-            </li>
-          @endif
+              {{-- <li class="nav-item">
+                <a class="nav-link" href="{{route('register')}}">Registrati</a>
+              </li> --}}
+              <div class="d-flex">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Ciao! accedi qui
+                  </a>
+                  <ul class="dropdown-menu">
+                    
+                    <li><a class="dropdown-item" href="{{route('login')}}">Accedi</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
+                  </ul>
+                </li>
+            </div>
+            @endif
         </ul>
       </div>
     </div>
