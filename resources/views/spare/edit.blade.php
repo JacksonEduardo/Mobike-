@@ -11,13 +11,22 @@
                     @csrf
                     @method('put')
                             <label for="brand" class="form-label">Modello</label>
-                        <input type="text" name="brand" class="form-control" id="brand">
+                        <input type="text" name="brand" class="form-control" id="brand" value="{{$spare->brand}}">
     
                         <label for="description" class="form-label">Descrizione</label>
-                        <input type="text" name="description" class="form-control" id="description">
+                        <input type="text" name="description" class="form-control" id="description" value="{{$spare->description}}">
     
                         <label for="photo" class="form-label">Foto</label>
                         <input type="file" name="photo" class="form-control" id="photo">
+                        <select name="spares[]" id="spare" class="form-control" multiple>
+                            @foreach($bikes as $bike)
+                                <option value="{{$bike->id}}"
+                                    @if($spare->bikes->contains($bike)) selected @endif
+                                    >
+                                    {{$bike->brand}}
+                                </option>
+                            @endforeach
+                        </select>
                         <div class="mb-3">
                             <label for="photoEsistente" class="form-label">La foto attuale</label>
                             <img style="width: 200px" src="{{Storage::url($spare->photo)}}" alt="">

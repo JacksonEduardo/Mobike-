@@ -51,7 +51,7 @@ class BikeController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        $bike->spares()->attach($request->spare);
+        $bike->spares()->attach($request->spares);
 
         //SECONDO METOD per creare un oggetti con l'unione delle due tabelle per mezzo della tabella PIVOT
         // $spare = Spare::find($request->spare);
@@ -124,7 +124,7 @@ class BikeController extends Controller
         }
        
         foreach($bike->spares as $spare){
-            $bike->spare()->detach($spare->id);
+            $bike->spares()->detach($spare->id);
         };
        
         $bike->delete();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bike;
 use App\Models\Spare;
 use Illuminate\Http\Request;
 use App\Http\Requests\SpareRequest;
@@ -28,21 +29,23 @@ class SpareController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('spare.create');
+    {   $bikes = Bike::all();
+        
+        return view('spare.create', compact('bikes'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(SpareRequest $request)
-    {
+    {       //MASS ASSIGMENT
             $spare = Spare::create([
                 'brand' => $request->brand,
                 'description' => $request->description,
                 'photo' => $request->photo ? $request->file('photo')->store('public/photos') : null,
                 'user_id' => Auth::user()->id,
             ]);
+            $spare->bikes()->attach($request->bikes);
             return redirect(route('spare.index'))->with('spareCreated', 'Il tuo annuncio è stato inserito correttamente');
     }
 
@@ -62,7 +65,9 @@ class SpareController extends Controller
         if($spare->user_id != Auth::id()){
             return redirect(route('spare.index'))->with('accessDenied', 'Non sei autorizzato ad effettuare questa operazione');
         }
-        return view('spare.edit', compact('spare'));
+
+        $bikes = Bike::all();
+        return view('spare.edit', compact('spare', 'bikes'));
     }
 
     /**
@@ -82,6 +87,9 @@ class SpareController extends Controller
                 'description' => $request->description,
             ]);
         }
+
+        $spare->bikes()->attach($request->bike);
+
         return redirect(route('spare.index'))->with('spareUpdate', 'il post è stato modificato corretamente');
     }
 
@@ -93,6 +101,10 @@ class SpareController extends Controller
         if($spare->user_id != Auth::id()){
             return redirect(route('bike.index'))->with('accessDenied', 'Non sei autorizzato ad effetturare questa operazione');
         }
+
+        foreach($spare->bikes as $bike){
+            $spare->bikes()->detach($bike->id);
+        };
 
         $spare->delete();
         return redirect(route('spare.index'))->with('spareDestroy', 'Hai elliminato correttamente l\'annuncio');

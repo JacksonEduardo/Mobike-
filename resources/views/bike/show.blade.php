@@ -28,7 +28,7 @@
                                     <hr>
                                     <ul>
                                         @foreach($bike->spares as $spare)
-                                            <li>{{$spare->description}} Marchio  {{$spare->brand}}</li>
+                                            <li>{{$spare->description}} <hr> compatibile con:  {{$spare->brand}}</li>
                                         @endforeach
                                     </ul>
                                     <hr>

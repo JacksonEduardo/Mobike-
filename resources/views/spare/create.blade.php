@@ -29,6 +29,17 @@
                         <label for="photo" class="form-label">Foto</label>
                         <input type="file" name="photo" class="form-control" id="photo">
 
+                        <div class="mb-3">
+                            <label for="bike" class="form-label">Scegli compatibilità</label>
+                            <select name="bikes[]" id="bike" class="form-control" multiple>
+                                @foreach($bikes as $bike)
+                                    <option value="{{$bike->id}}">
+                                        {{$bike->brand}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form> 
             </div>
