@@ -1,7 +1,7 @@
 <x-layout>
     
     <x-header>  
-        Mobike
+        Mob
     </x-header>
 
     @if(session('userDeleted'))
