@@ -1,3 +1,3 @@
 import './bootstrap';
-import 'bootstrap';ù
+import 'bootstrap';
 import './script'
