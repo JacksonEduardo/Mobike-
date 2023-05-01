@@ -96,7 +96,6 @@
   .brandWelcome{
     position: absolute;
     width: 45%;
-    background-color: #309df044;
     right: calc(50%/2);
     top: calc(40%/3);
   }
@@ -251,11 +250,43 @@
   transform: translateY(px);
 }
 
-/* .square:focus {
-  border-bottom: 20px solid rgb(51, 255, 0);
-  outline: none;
-} */
     /* END 3 DIV WITH IMG BIKES SPARE AND EXTRA */
+
+/* START CAROSEL */
+swiper-container {
+  width: 80%;
+  height: 100%;
+}
+@media (max-width: 991px) {
+  swiper-container {
+    width: 100%;
+    height: 50% !important;
+  }
+}
+@media (max-width: 991px) {
+  .swiper-container {
+    width: 100%;
+    height: 50% !important;
+  }
+}
+
+swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* END CAROSEL */
 /* FINE WELCOME PAGE */
 
 /* INIZIO CARD DINAMICA */

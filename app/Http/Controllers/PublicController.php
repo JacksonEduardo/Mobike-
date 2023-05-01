@@ -14,9 +14,9 @@ class PublicController extends Controller
 
     public function homepage(){
 
-        $bikes = Bike::take(2)->get();
-        $spares = Spare::take(2)->get();
-        $extras = Extra::take(2)->get();
+        $bikes = Bike::take(4)->get();
+        $spares = Spare::take(3)->get();
+        $extras = Extra::take(3)->get();
 
         return view('welcome', compact('bikes', 'spares', 'extras'));
 
