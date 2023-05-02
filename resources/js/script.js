@@ -66,3 +66,7 @@ hiddenElements.forEach((el) => observer.observe(el));
 //  const hiddenRightElements = document.querySelectorAll('.hidden-right');
 //  hiddenRightElements.forEach((el) => observer.observe(el));
 // FINE EFFETTO OBSERVER
+
+// START LOGIN
+
+// END LOGIN
