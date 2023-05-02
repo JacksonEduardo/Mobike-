@@ -1,6 +1,12 @@
 
 <x-layout>
     
+@if(session('userDeleted'))
+    <div class="alert alert-success">
+        {{session('userDeleted')}}
+    </div>
+@endif
+
 <div class="h-100 imgWelcome">
     <div class="brandWelcome rounded hidden">
         <h1 class="animationBrand brandFont textColor fontSizeWelcome m-0"><span class="colorFont">M</span>obike</h1>
@@ -30,7 +36,6 @@
         <div class="col-12 col-lg-4 backgroundSpare d-flex justify-content-center">
             <div class="mt-2 descriptionTreeCard">
                 <p class="textColor text-center generalText"><span class="fs-2">Accessori</span> compatibili con montainbike o biciclette da corsa</p>
-                {{-- <p class="textColor text-center"></p> --}}
                 <div class=" d-flex justify-content-center">
                     <a href="{{route('extra.index')}}">
                         <button class="button generalText">Guarda gli accessori</button>
@@ -66,23 +71,6 @@
 {{-- END WHITE SPACE --}}
 
 {{-- START CAROSEL --}}
-{{-- ---------FUNZIONANTE --}}
-{{-- <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" slides-per-view="3"
-space-between="30" free-mode="true">
-<swiper-slide>Slide 1</swiper-slide>
-<swiper-slide>Slide 2</swiper-slide>
-<swiper-slide>Slide 3</swiper-slide>
-<swiper-slide>Slide 4</swiper-slide>
-<swiper-slide>Slide 5</swiper-slide>
-<swiper-slide>Slide 6</swiper-slide>
-<swiper-slide>Slide 7</swiper-slide>
-<swiper-slide>Slide 8</swiper-slide>
-<swiper-slide>Slide 9</swiper-slide>
-</swiper-container> --}}
-
-
-
-
 {{-- --------carosel bikes --}}
 <swiper-container class="mySwiper pb-5" pagination="true" pagination-clickable="true" slides-per-view="2"
 space-between="30" free-mode="true">
@@ -101,8 +89,8 @@ space-between="30" free-mode="true">
 @endforeach
 </swiper-container>
 
-{{-- ----------carosel spare --}}
-    
+
+{{-- ----------carosel spare --}} 
 <div class="separationGradient"></div>
 <div class="container mt-5">
     <div class="row">
@@ -178,16 +166,52 @@ space-between="30" free-mode="true">
 </section>
 {{-- END FEEDBACK --}}
 
+{{-- START REGISTRATION QUESTION --}}
+@Auth
+<section class="container registrationQuestion">
+    <div class="row h-100 align-items-center">
+        <div class="col-12 col-md-7">
+            <h3 class="generalText fs-1">Essendo già registrato su <span class="colorFont brandFont">M</span><span class="brandFont">obike</span></h3>
+            <p class="generalText fs-5 text-muted fst-italic">Puoi pubblicare i tuoi prodotti come biciclette, ricambi e accessori</p>
+        </div>
+        <div class="col-12 col-md-5">
+            <a class="text-decoration-none" href="{{route('bike.create')}}">
+                <button class="button generalText text-dark">Biciclette</button>
+            </a>
+            <a class="text-decoration-none" href="{{route('spare.create')}}">
+                <button class="button generalText text-dark">Ricambi</button>
+            </a>
+            <a class="text-decoration-none" href="{{route('extra.create')}}">
+                <button class="button generalText text-dark">Extra</button>
+            </a>
+        </div>
+    </div>
+</section>
+@else
+<section class="container registrationQuestion">
+    <div class="row h-100 align-items-center">
+        <div class="col-12 col-md-7">
+            <h3 class="generalText fs-1">Ti sei già registrato su <span class="colorFont brandFont">Mobike</span>?</h3>
+            <p class="generalText fs-5 text-muted fst-italic">Registrandoti hai la possibilità di avere ulteriori sconti</p>
+        </div>
+        <div class="col-12 col-md-5">
+            <a class="text-decoration-none" href="{{route('register')}}">
+                <button class="button generalText text-dark">Registrati</button>
+            </a>
+            <a class="text-decoration-none" href="{{route('login')}}">
+                <button class="button generalText text-dark">Accedi</button>
+            </a>
+        </div>
+    </div>
+</section>
+@endif
+{{-- END REGISTRATION QUESTION --}}
+
 
     {{-- <x-header>  
         Mobike
     </x-header> --}}
 
-    @if(session('userDeleted'))
-        <div class="alert alert-success">
-            {{session('userDeleted')}}
-        </div>
-    @endif
     
     {{-- <div class="container-fluid background">
         <div class="row justify-content-center">
@@ -248,21 +272,6 @@ space-between="30" free-mode="true">
 
         </div></div>
     </div> --}}
-{{-- ANIMAZIONE --}}
-<div class="camion d-flex">
-    ciao
-    <div class="loop-wrapper">
-        <div class="mountain"></div>
-        <div class="hill"></div>
-        <div class="tree"></div>
-        <div class="tree"></div>
-        <div class="tree"></div>
-        <div class="rock"></div>
-        <div class="truck"></div>
-        <div class="wheels"></div>
-    </div> 
-    ciao
-</div>
 </x-layout>
 
 
