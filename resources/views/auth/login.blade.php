@@ -39,8 +39,6 @@
                     <a class="text-decoration-none" href="{{route('register')}}">
                         <p class="text-dark d-flex align-items-center generalText fw-bold">Fallo qui! ci vorranno pochi secondi <span><img class="ms-2" src="/media/typewritting.png" alt=""></span></p>
                     </a>
-                    
-                    
                 </form>
             </div>
         </div>

@@ -72,7 +72,7 @@ class ExtraController extends Controller
     public function update(Request $request, Extra $extra)
     {
         if($request->photo){
-            $extra->upadate([
+            $extra->update([
                 'name'=> $request->name,
                 'brand'=> $request->brand,
                 'price'=> $request->price,

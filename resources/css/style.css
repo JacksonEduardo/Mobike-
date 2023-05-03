@@ -1,6 +1,5 @@
 .titleContainer{
-    height: 20vh;
-    background-color: rgb(233, 168, 65);
+    background-color: rgb(255, 255, 255);
 }
 
 .bg{
@@ -38,7 +37,6 @@
 }
 
 /* INIZIO NAVBAR */
-
 #logo{
   width: 55px;
   animation: loading 60s linear infinite;
