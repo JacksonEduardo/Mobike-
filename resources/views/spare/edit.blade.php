@@ -38,7 +38,6 @@
                     <a href="{{route('spare.index')}}" class="text-decoration-none button generalText text-dark my-2">torna indieto</a>       
                 </form>
             </div>
-
         </div>
     </div>
 
