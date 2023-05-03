@@ -6,6 +6,50 @@
 
      --}}
 
+     <div class="registerContainer">
+        <div class="containerBlocks ">
+            <div class="registerLeft">
+                <img class="logoRocketRegister" src="/media/rocket.png" alt="">
+            </div>
+            <div class="registerRight">
+                <form class="p-3" method="POST" action="{{route('login')}}">
+                    @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <div class="mb-3">
+                        <label for="email" class="form-label generalText fw-bold">Indirizzo email</label>
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label generalText fw-bold">Password</label>
+                        <input type="password" name="password" class="form-control" id="password">
+                    </div>
+                    
+                    <button type="submit" class="button generalText text-dark">Accedi</button>
+
+                    
+                    <p class="mt-3 generalText fw-bold">Non sei ancora registrato?</p>
+                    <a class="text-decoration-none" href="{{route('register')}}">
+                        <p class="text-dark d-flex align-items-center generalText fw-bold">Fallo qui! ci vorranno pochi secondi <span><img class="ms-2" src="/media/typewritting.png" alt=""></span></p>
+                    </a>
+                    
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{{-- 
 <div class="container">
     
 </div>
@@ -46,7 +90,7 @@
             </form>
         </div>
     </div>
-</div>
+</div> --}}
 
 
     {{-- <div class="container h-100 my-5">

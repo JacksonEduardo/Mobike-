@@ -83,3 +83,107 @@ backdrop-filter: blur(5px);
 border: 1px solid rgba(255, 255, 255, 0.47);
 }
 /* END LOGIN STYLE */
+
+/* START REGISTER PAGE */
+/* .registerContainer{
+    width: 100%;
+    height: 100%;
+    background-image: url(/public/media/login.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+}
+.registerLeft{
+    width: 20%;
+    height: 50%;
+}
+.registerRight{
+    width: 10%;
+    height: auto;
+} */
+
+.registerContainer {
+    width: 100%;
+    height: 100%;
+    background-image: url(/public/media/login.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .containerBlocks{
+    width: 50%;
+    background: rgba(255, 255, 255, 0.28);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .registerLeft {
+    width: 25%;
+  }
+  .registerRight {
+    width: 60%;
+  }
+
+  .logoRocketRegister{
+    width: 120px;
+    height: 120px;
+  }
+  
+  @media (max-width: 991px){
+    .registerContainer {
+        width: 100%;
+        height: 100%;
+        background-image: url(/public/media/loginMobile.jpg);
+        background-size: cover;
+        background-position: center;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+      }
+    
+      .containerBlocks{
+        width: 70%;
+        background: rgba(255, 255, 255, 0.28);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .registerLeft {
+        width: 43%;
+        display: flex;
+        justify-content: center;
+      }
+      .registerRight {
+        width: 90%;
+      }
+    
+      .logoRocketRegister{
+        width: 100px;
+        height: 100px;
+      }
+  }
+.buttonRegister{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 991px){
+  .buttonRegister{
+    display: flex;
+    flex-direction: column;
+  }
+}
+/* END REGISTER PAGE */
