@@ -1,5 +1,6 @@
 <x-layout>
-    <x-header>
+    
+    <x-header class="spaceNav">
         Tutte le biciclette
     </x-header>
     
@@ -27,7 +28,7 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            @if(counte($bikes))
+            @if(count($bikes))
             @foreach($bikes as $bike)
             <div class="col-12 col-md-5">
                 <ul class="card-list">

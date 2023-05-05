@@ -1,5 +1,5 @@
 
-<nav class="100-vw colorPrimary">
+<nav class="100-vw colorPrimary fixed-top">
   <div class="navbar shadow mx-auto borderCustom navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid justify-content-between">
       <img id="logo" src="/media/logo.png" alt="">
@@ -18,6 +18,9 @@
           <li class="nav-item">
             <a class="nav-link active textColor generalText fs-5" aria-current="page" href="{{route('extra.index')}}">Accessori</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active textColor generalText fs-5" aria-current="page" href="{{route('profile')}}">Profilo</a>
+          </li>
         </ul>
            
             @Auth
@@ -26,12 +29,12 @@
                  Ciao {{Auth::user()->name}} <br>
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item textColor generalText fs-5" href="{{route('bike.create')}}">Inserisci Bike</a></li>
-                  <li><a class="dropdown-item textColor generalText fs-5" href="{{route('spare.create')}}">Inserisci Ricambio</a></li>
-                  <li><a class="dropdown-item textColor generalText fs-5" href="{{route('extra.create')}}">Inserisci Accessorio</a></li>
+                <li><a class="dropdown-item generalText fs-5" href="{{route('bike.create')}}">Inserisci Bike</a></li>
+                <li><a class="dropdown-item generalText fs-5" href="{{route('spare.create')}}">Inserisci Ricambio</a></li>
+                <li><a class="dropdown-item generalText fs-5" href="{{route('extra.create')}}">Inserisci Accessorio</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a></li>
-                  <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none">@csrf</form>
+                <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none">@csrf</form>
               </ul>
             </div>
             @else

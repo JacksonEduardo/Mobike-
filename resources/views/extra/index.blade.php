@@ -21,7 +21,7 @@
     @endif
 
 
-    <div class="container-fluid">
+    <div class="container-fluid background">
         <div class="row justify-content-center">
             @if(count($extras))
             @foreach($extras as $extra)

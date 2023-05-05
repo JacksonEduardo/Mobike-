@@ -3,6 +3,39 @@
         Pagina di dettaglio
     </x-header>
 
+    <div class="containerShow d-flex justify-content-center align-items-center">
+        <div class="uno">
+            <img class="imgShow" src="{{Storage::url($bike->photo)}}" alt="...">
+        </div>
+        <div class="due">
+            <div class="solu_title">
+                <h3>{{$bike->brand}}</h3>
+            </div>
+            <p>{{$bike->name}}</p>
+            <p>{{$bike->price}} €</p>
+            <p>Inserito il: {{$bike->created_at}}</p>
+            @if(count($bike->spares) > 0)
+                <hr>
+                <ul>
+                    @foreach($bike->spares as $spare)
+                        <p>Compatibile con ricambio marchio: {{$spare->brand}}</p>
+                        <p>Descrizione{{$spare->description}}</p>
+                    @endforeach
+                </ul>
+                <hr>
+            @endif
+            @if(Auth::user() && Auth::id() == $bike->user_id)
+                <a href="{{route('bike.edit', compact('bike'))}}">
+                    <button type="button" class="read_more_btn">Modifica</button>
+                </a>
+                <form method='POST' action="{{route('bike.destroy', compact('bike'))}}" class="d-inline mt-2">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Ellimina</button>  
+                </form>
+            @endif
+        </div>
+    </div>
 
     <div class="container-fluid my-5 background">
         <div class="row">

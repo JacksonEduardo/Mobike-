@@ -1,0 +1,58 @@
+.titleContainer{
+    background-color: rgb(255, 255, 255);
+}
+
+:root {
+  --main-color: rgb(53, 53, 53);
+  --second-color: rgb(30,30,30);
+  --text-color: rgb(238, 244, 244);
+  --color-font: rgb(239,68,22);
+}
+.colorPrimary{
+  background-color: var(--main-color);
+}
+
+.colorSecondary{
+  background-color: var(--second-color);
+}
+
+.textColor{
+  color: var(--text-color) !important;
+}
+
+.colorFont{
+  color: var(--color-font);
+}
+
+.brandFont{
+  font-family: 'Praise', cursive;
+}
+
+.generalText{
+  font-family: 'Titillium Web', sans-serif;
+}
+
+/* START STYLE OF SHOW PAGE */
+.containerShow{
+    width: 100%;
+    height: 100vh;
+    background-color: aqua;
+    background-image: url(/public/media/show.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.uno{
+    width: 50%;
+    height: 80%;
+    background-color: blueviolet;
+}
+.due{
+    width: 50%;
+    height: 80%;
+    background-color: rgba(223, 215, 232, 0.423);
+}
+.imgShow{
+    width: 90%;
+    border-radius: 5px;
+}
+/* END STYLE OF SHOW PAGE */

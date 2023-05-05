@@ -63,6 +63,16 @@
 .brandCustom:hover {
   color: var(--color-font);
 }
+
+.spaceNav{
+  width: 100%;
+  height: 84px;
+}
+@media (max-width: 991px){
+  .spaceNav{
+    height: 73px;
+  }
+}
 /* FINE NAVBAR */
 
 /* INIZIO WELCOME PAGE */
