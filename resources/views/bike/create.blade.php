@@ -3,10 +3,10 @@
         Inserisci un annuncio
         <p class="fs-5 text-muted fst-italic">Oppure inserisci un:</p>
         <a class="text-decoration-none" href="{{route('extra.create')}}">
-            <button class="button generalText text-dark">Accessorio</button>
+            <button class="button generalText fs-2 text-dark">Accessorio</button>
         </a>
         <a class="text-decoration-none" href="{{route('spare.create')}}">
-            <button class="button generalText text-dark">Ricambio</button>
+            <button class="button generalText fs-2 text-dark">Ricambio</button>
         </a>
     </x-header>
     <div class="containerCreate">

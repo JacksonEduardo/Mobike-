@@ -3,84 +3,41 @@
         Pagina di dettaglio
     </x-header>
 
-    <div class="containerShow d-flex justify-content-center align-items-center">
-        <div class="uno">
-            <img class="imgShow" src="{{Storage::url($bike->photo)}}" alt="...">
+    <div class="containerShow">
+        <div class="left">
+            <img class="imgShow shadow" src="{{Storage::url($bike->photo)}}" alt="...">
         </div>
-        <div class="due">
-            <div class="solu_title">
-                <h3>{{$bike->brand}}</h3>
-            </div>
-            <p>{{$bike->name}}</p>
-            <p>{{$bike->price}} €</p>
-            <p>Inserito il: {{$bike->created_at}}</p>
+        <div class="right p-5">
+            <h1 class="generalText fw-bold">{{$bike->brand}}</h1>
+            <p class="generalText fs-2 fst-italic">{{$bike->name}}</p>
+            <p class="generalText fs-4">{{$bike->price}} €</p>
             @if(count($bike->spares) > 0)
                 <hr>
                 <ul>
                     @foreach($bike->spares as $spare)
-                        <p>Compatibile con ricambio marchio: {{$spare->brand}}</p>
-                        <p>Descrizione{{$spare->description}}</p>
+                        <p class="generalText fs-6">Compatibile con ricambio marchio: {{$spare->brand}}</p>
+                        <p class="generalText fs-6">Descrizione: {{$spare->description}}</p>
+                        <p class="date">Inserito il: {{$bike->created_at}}</p>
                     @endforeach
                 </ul>
                 <hr>
             @endif
             @if(Auth::user() && Auth::id() == $bike->user_id)
-                <a href="{{route('bike.edit', compact('bike'))}}">
-                    <button type="button" class="read_more_btn">Modifica</button>
-                </a>
-                <form method='POST' action="{{route('bike.destroy', compact('bike'))}}" class="d-inline mt-2">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="btn btn-danger">Ellimina</button>  
-                </form>
+                <div>
+                    <a class="text-decoration-none" href="{{route('bike.edit', compact('bike'))}}">
+                        <button type="button" class="button mb-4 text-black">Modifica</button>
+                    </a>
+                    <form method='POST' action="{{route('bike.destroy', compact('bike'))}}" class="d-inline">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="mx-3 my-auto btn btn-danger">Ellimina</button>  
+                    </form>
+                </div>
             @endif
+            <a href="{{route('bike.index')}}">
+                <button class="button mt-3 mb-5 text-black">Indietro</button>
+            </a>
         </div>
     </div>
 
-    <div class="container-fluid my-5 background">
-        <div class="row">
-            <div class="col-12 col-md-12 my-5 p-auto">
-                <div class="our_solution_category">
-                    <div class="solution_cards_box d-flex">
-                        <div class="solution_card">
-                            <div class="hover_color_bubble"></div>
-                            <div class="so_top_icon">
-                                <img src="{{Storage::url($bike->photo)}}" class="card-img-top" alt="...">
-                            </div>
-                            <div class="solu_title">
-                                <h3>{{$bike->brand}}</h3>
-                            </div>
-                            <div class="solu_description">
-                                <p>{{$bike->name}}</p>
-                                <p>{{$bike->description}}</p>
-                                <p>{{$bike->price}} €</p>
-                                <a href="{{route('bike.index', compact('bike'))}}">
-                                    <button type="button" class="read_more_btn">Indietro</button>
-                                </a>
-                                @if(count($bike->spares) > 0)
-                                    <hr>
-                                    <ul>
-                                        @foreach($bike->spares as $spare)
-                                            <li>{{$spare->description}} <hr> compatibile con:  {{$spare->brand}}</li>
-                                        @endforeach
-                                    </ul>
-                                    <hr>
-                                @endif
-                                @if(Auth::user() && Auth::id() == $bike->user_id)
-                                    <a href="{{route('bike.edit', compact('bike'))}}">
-                                        <button type="button" class="read_more_btn">Modifica</button>
-                                    </a>
-                                    <form method='POST' action="{{route('bike.destroy', compact('bike'))}}" class="d-inline mt-2">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger">Ellimina</button>  
-                                    </form>
-                                @endif
-                            </div>
-                        </div>   
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </x-layout>

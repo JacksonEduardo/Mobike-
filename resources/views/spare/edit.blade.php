@@ -1,7 +1,8 @@
 <x-layout>
 
     <x-header>
-        Modifica l'articolo
+        Sei nella zona di modifica del tuo articolo
+        <p class="generaltext text-muted fst-italic fs-5">Sezione Ricambi</p>
     </x-header>
 
     {{-- new form --}}

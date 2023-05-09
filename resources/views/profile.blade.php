@@ -1,8 +1,8 @@
 <x-layout>
 
-    <x-header>
-        Profilo
-    </x-header>
+<x-header>
+    Profilo
+</x-header>
 
 
 <div class="profile">
@@ -68,56 +68,29 @@
     </div>
   </div>
 
-  {{-- Modal photo profile --}}
-  <div class="modal fade" id="photoProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Imposta foto profilo</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            Ricorda, un potenziale acaquirente può vedere la tua foto profilo
-        </div>
-        <div class="modal-footer">
-            <form method="POST" action="{{route('changeAvatar', ['user' => Auth::user()])}}" enctype="multipart/form-data">
-                @csrf
-                @method('put')
-                <input type="file" name="avatar" class="form-control">
-                <button type="button" class="btn btn-secondary mt-2" data-bs-dismiss="modal">chiudi</button>
-                <button type="submit" class="btn btn-primary mt-2">Inserisci Avatar</button>
-            </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-    {{-- <div class="container">
-        <div class="row justify-content-center">
-            <h2>Inserisci una foto profilo</h2>
-            <form method="POST" action="{{route('changeAvatar', ['user' => Auth::user()])}}" enctype="multipart/form-data">
-                @csrf
-                @method('put')
-                <input type="file" name="avatar" class="form-control">
-                <button type="submit" class="btn btn-primary">Inserisci Avatar</button>
-            </form>
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <form method="POST" action="{{route('user.destroy')}}">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-primary">Cancella profilo</button>
-                    </form>
-                </div>
+    {{-- Modal photo profile --}}
+    <div class="modal fade" id="photoProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Imposta foto profilo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Ricorda, un potenziale acaquirente può vedere la tua foto profilo
+            </div>
+            <div class="modal-footer">
+                <form method="POST" action="{{route('changeAvatar', ['user' => Auth::user()])}}" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <input type="file" name="avatar" class="form-control">
+                    <button type="button" class="btn btn-secondary mt-2" data-bs-dismiss="modal">chiudi</button>
+                    <button type="submit" class="btn btn-primary mt-2">Inserisci Avatar</button>
+                </form>
             </div>
         </div>
-    </div> --}}
+        </div>
+    </div>
 
         {{-- START BICYCLE SPACE --}}
     <div class="container mt-5">
@@ -159,8 +132,7 @@
     {{-- END BICYLCLE SPACE--}}
 
 
-
-       {{-- START SPARE SPACE --}}
+    {{-- START SPARE SPACE --}}
     <div class="container mt-5">
         <div class="row">
             <div class="text-center">
@@ -200,7 +172,7 @@
     {{-- END SPARE SPACE --}}
 
 
-       {{-- START EXTRA SPACE --}}
+    {{-- START EXTRA SPACE --}}
     <div class="container mt-5">
         <div class="row">
             <div class="text-center">
@@ -239,70 +211,4 @@
     </div>
     {{-- END EXTRA SPACE --}}
 
-
-
-
-    {{-- <div class="container-fluid my-5 background">
-        <div class="row">
-            <div>
-                <h1>Ciao {{Auth::user()->name}}</h1>
-                <p>Ecco i tuoi annunci</p>
-                <h2>Le mie biciclette</h2>
-                <img style="width: 100px; background-color:red; border-radius: 50%" src="{{Storage::url(Auth::user()->avatar)}}" alt="">
-            </div>
-                @foreach(Auth::user()->bikes as $bike)
-                     <div class="col-12 col-md-4">
-                        <div class="our_solution_category">
-                            <div class="solution_cards_box">
-                                <div class="solution_card">
-                                    <div class="hover_color_bubble"></div>
-                                    <div class="so_top_icon">
-                                        <img src="{{Storage::url($bike->photo)}}" class="card-img-top img-fluid" alt="...">
-                                    </div>
-                                    <div class="solu_title">
-                                        <h3>{{$bike->brand}}</h3>
-                                    </div>
-                                    <div class="solu_description">
-                                        <p>{{$bike->name}}</p>
-                                        <p class="fst-italic text-muted">{{$bike->user->name}}</p>
-                                        <a href="{{route('bike.show', compact('bike'))}}">
-                                            <button type="button" class="read_more_btn">Dettagli</button>
-                                        </a>
-                                    </div>
-                                </div>   
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-        </div>
-
-
-        <div class="row">
-            <h2>I ricambi inseriti</h2>
-            @foreach(Auth::user()->spares as $spare)
-                <div class="col-12 col-md-4">
-                    <div class="our_solution_category">
-                        <div class="solution_cards_box">
-                            <div class="solution_card">
-                                <div class="hover_color_bubble"></div>
-                                <div class="so_top_icon">
-                                    <img src="{{Storage::url($spare->photo)}}" class="card-img-top img-fluid" alt="...">
-                                </div>
-                                <div class="solu_title">
-                                    <h3>{{$spare->brand}}</h3>
-                                </div>
-                                <div class="solu_description">
-                                    <p>{{$spare->description}}</p>
-                                    <p class="fst-italic text-muted">{{$spare->user->name}}</p>
-                                    <a href="{{route('spare.show', compact('spare'))}}">
-                                        <button type="button" class="read_more_btn">Dettagli</button>
-                                    </a>
-                                </div>
-                            </div>   
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div> --}}
 </x-layout>

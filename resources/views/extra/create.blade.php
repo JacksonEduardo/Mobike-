@@ -4,10 +4,10 @@
     Inserisci un annuncio
     <p class="fs-5 text-muted fst-italic">Oppure inserisci un:</p>
     <a class="text-decoration-none" href="{{route('bike.create')}}">
-        <button class="button generalText text-dark">Bicicletta</button>
+        <button class="button generalText fs-2 text-dark">Bicicletta</button>
     </a>
     <a class="text-decoration-none" href="{{route('spare.create')}}">
-        <button class="button generalText text-dark">Ricambio</button>
+        <button class="button generalText fs-2 text-dark">Ricambio</button>
     </a>
 </x-header>
 <div class="containerCreate">
